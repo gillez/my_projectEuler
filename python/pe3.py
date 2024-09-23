@@ -34,6 +34,7 @@ factors = []
 #     x = x + 1
 
 # Solution 1: We only need to iter up to the square root of the target
+# Also don't need even numbers (not prime) and can start at 3.
 maxIter = math.floor(math.sqrt(target)) + 1
 print("maxIter (sqrt of {0} + 1): {1}".format(target, maxIter))
 for x in range(3, maxIter, 2):
