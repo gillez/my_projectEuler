@@ -20,14 +20,18 @@ def isPalindrome(i):
 		return True
 	return False
 
-for i in range(100, 1000):
-	for j in range(i, 1000):
+for i in range(999, 99, -1):
+	for j in range(i,99, -1):
 		product = i * j
 		if product > largest[0]:
 			if isPalindrome(product):
+				print("Found palindrome", i, j, "=", product)
 				largest = [product, i, j]
+				break
+		else:
+			break
 
 print(largest)
-print("Num palindromes", numPalindromes)
+print("Num palindromes checked", numPalindromes)
 
 print(f"--- Number of seconds to solve {time.time() - start_time}")
