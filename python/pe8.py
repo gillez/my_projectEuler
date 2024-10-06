@@ -46,12 +46,17 @@ end = len(numarray) - conseclen
 for i in range(0, end):
     product = 1
     for j in range(0, conseclen):
-        product *= numarray[i + j]
-    if product > largest:
-        productArray = []
+        if numarray[i + j] == 0:
+            product = 0
+            break
+    if product > 0:
         for j in range(0, conseclen):
-            productArray.append(numarray[i + j])
-        largest = product
+            product *= numarray[i + j]
+        if product > largest:
+            productArray = []
+            for j in range(0, conseclen):
+                productArray.append(numarray[i + j])
+            largest = product
 
 print(productArray)
 print(largest)
