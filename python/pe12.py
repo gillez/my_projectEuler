@@ -6,11 +6,48 @@
 # Let us list the factors of the first seven triangle numbers:
 
 #  1: 1
-#  2: 3: 1, 3
-#  3: 6: 1, 2, 3, 6
+#  3: 1, 3
+#  6: 1, 2, 3, 6
 # 10: 1, 2, 5, 10
 # 15: 1, 3, 5, 15
 # 21: 1, 3, 7, 21
 # 28: 1, 2, 4,  7, 14, 28
 # We can see that 28 is the first triangle number to have over five divisors.
+# What is the value of the first triangle number to have over five hundred divisors?
+
+import time
+import math
+start_time = time.time()
+
+# num = 7
+# triangle = 28
+# divisors = 6
+num = 2
+triangle = 3
+divisors = 2
+
+def getNumDivisors(num):
+  global list_divisors
+  sqrt_num = math.floor(math.sqrt(num))
+  num_divisors = 2
+
+  for i in range(2, sqrt_num + 1):
+    if (num % i == 0):
+      num_divisors += 1
+      pair = math.floor(num / i)
+      if (pair != i):
+        num_divisors += 1
+
+  return num_divisors
+
+while divisors <= 500:
+  num += 1
+  triangle = triangle + num
+  divisors = getNumDivisors(triangle)
+
+print(triangle)
+print("divisors", divisors)
+
+print(f"--- Number of seconds to solve {time.time() - start_time}")
+
 
