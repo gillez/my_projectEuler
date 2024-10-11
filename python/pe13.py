@@ -104,7 +104,6 @@ input_string = """
 """
 
 import time
-import math
 
 
 def parse_string():
