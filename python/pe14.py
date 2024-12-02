@@ -14,9 +14,24 @@ import math
 
 start_time = time.time()
 
-longest = 0
+longest = 1
+longest_start = 1
 
-print(longest)
+for i in range(2, 1000000):
+  num = i
+  length = 1
+  while num != 1:
+    if (num % 2):
+      num = (3 * num) + 1
+    else:
+      num = num / 2
+    length = length + 1
+
+  if (length > longest):
+    longest = length
+    longest_start = i
+
+print(f"longest_start {longest_start} length {longest}")
 
 print(f"--- Number of seconds to solve {time.time() - start_time}")
 
