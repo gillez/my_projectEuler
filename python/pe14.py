@@ -13,23 +13,45 @@ import time
 import math
 
 start_time = time.time()
+NUM = 1000000
+MAX = NUM - 1
 
 longest = 1
 longest_start = 1
+links = [0] * NUM
 
-for i in range(2, 1000000):
+for i in range(2, NUM):
   num = i
-  length = 1
-  while num != 1:
+  length = 0
+
+  while num != 1 and (num > MAX or links[num] == 0):
     if (num % 2):
       num = (3 * num) + 1
     else:
-      num = num / 2
+      num = math.floor(num / 2)
+    length = length + 1
+
+  if links[num] != 0:
+    length = length + links[num]
+  else:
+    # Add 1 for "1"
     length = length + 1
 
   if (length > longest):
     longest = length
     longest_start = i
+
+  # Calculate the chain from the first number to the next chain
+  if links[i] == 0:
+    num = i
+    while num != 1 and (num > MAX or links[num] == 0):
+      if num < NUM:
+        links[num] = length
+      length = length - 1
+      if (num % 2):
+        num = (3 * num) + 1
+      else:
+        num = math.floor(num / 2)
 
 print(f"longest_start {longest_start} length {longest}")
 
