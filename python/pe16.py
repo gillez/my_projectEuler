@@ -4,6 +4,18 @@
 import time
 import math
 
+start_time = time.time()
+
+strnum = str(pow(2, 1000))
+total = 0
+
+print(strnum)
+
+for c in strnum:
+    total += int(c)
+
+print(f"total {total}")
+
 print(f"--- Number of seconds to solve {time.time() - start_time}")
 
 
