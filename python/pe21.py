@@ -52,7 +52,7 @@ print(f"--- Number of seconds to solve {time.time() - start_time}")
 # solution 1: sieve solution
 # Note, this is the fastest sieve solution given on the Udemy video, however, I have
 # realised that, although it given the correct answer in our case it's not quite
-# correct! If you reduce max to 285, the answers are not the same! This is
+# correct! If you reduce max to 285, the answers are not the same! This is because
 # it doesn't calculate the last few numbers correctly, probably due to rounding when
 # calculatng int(math.sqrt(max)) and int(max/i)
 start_time = time.time()
