@@ -18,8 +18,54 @@ import math
 
 start_time = time.time()
 
+max = 28123
+
 answer = 0
 
+start_time = time.time()
 
+sums = [1] * max
+
+# Use a sieve to find all the divisors
+
+for i in range(2, math.ceil(math.sqrt(max))):
+    sums[i*i] += i
+    for j in range(i + 1, int(max/i)):
+        sums[i*j] += i + j
+
+# for i in range(2, max):
+#     print("sums", i, sums[i])
+
+abundantNumbers = []
+
+# Find all abundant numbers
+for i in range(2, max):
+    if sums[i] > i:
+        abundantNumbers.append(i)
+
+numAbundant = len(abundantNumbers)
+flags = [1] * max
+halfMax = max / 2
+
+abundantIter = int(numAbundant / 2)
+if abundantNumbers[abundantIter] > halfMax:
+    while abundantNumbers[abundantIter] > halfMax:
+        abundantIter -= 1
+else:
+    while abundantNumbers[abundantIter] <= halfMax:
+        abundantIter += 1
+
+print("numAbundant", numAbundant, "abundantIter", abundantIter + 1)
+for i in range(0, abundantIter + 1):
+    for j in range(i, numAbundant):
+        tot = abundantNumbers[i] + abundantNumbers[j]
+        if tot < max:
+            flags[tot] = 0
+
+for i in range(1, max):
+    if flags[i] == 1:
+        answer += i
+
+# Go through each pair of numbers and add together.
 print(f"answer: {answer}")
 print(f"--- Number of seconds to solve {time.time() - start_time}")
