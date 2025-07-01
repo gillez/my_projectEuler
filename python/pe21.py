@@ -14,7 +14,7 @@ import math
 
 start_time = time.time()
 
-max = 287
+max = 288
 
 # Used for both solutions to find and add amicable pairs.
 def sumAmicable(sums):
@@ -59,8 +59,9 @@ start_time = time.time()
 
 sums = [1] * max
 
-for i in range(2, int(math.sqrt(max))):
-    for j in range(i, int(max/i)):
+for i in range(2, math.ceil(math.sqrt(max))):
+    sums[i+i] += i
+    for j in range(i+1, int(max/i)):
         sums[i*j] += i + j
 
 answer = sumAmicable(sums)
