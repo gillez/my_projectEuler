@@ -23,8 +23,18 @@ import math
 
 start_time = time.time()
 
-answer = 0
+last = 1
 
+answer = 3
+next = 2
+numdigits = 0
+while numdigits < 1000:
+    fib = next + last
+    last = next
+    next = fib
+    answer += 1
+    numdigits = len(str(fib))
 
+print(fib)
 print(f"answer: {answer}")
 print(f"--- Number of seconds to solve {time.time() - start_time}")
